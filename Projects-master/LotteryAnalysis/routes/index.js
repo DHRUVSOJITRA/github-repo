@@ -13,11 +13,12 @@ new CronJob('0 0 0 * * 4,6', function(){
 }, null, true,null);
 
 exports.index = function(req, res){
-	dbconn.getlastwinningnum(function(err,rows){
-			console.log(rows.length);
-			//readFile();
-		  res.render('index', {win:rows });
-	});
+	// dbconn.getlastwinningnum(function(err,rows){
+	// 		console.log(rows.length);
+	// 		//readFile();
+	// 	  res.render('index', {win:rows });
+	// });
+	return res.render('blue/index.ejs');
 };
 
 exports.getLowestNumFreq = function(req, res){

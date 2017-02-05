@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded()); 
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,10 +29,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.configure('development', function() {
   console.log('Using development settings.');
   app.set('connection', mysql.createConnection({
-    host: '',
-    user: '',
-    port: '',
-    password: ''}));
+    host: 'localhost',
+    user: 'root',
+    port: '3306',
+    password: 'root'}));
   app.use(express.errorHandler());
 });
 
@@ -46,7 +46,7 @@ app.configure('production', function() {
 });
 
 
-function init() {
+//function init() {
 
 app.get('/', routes.index);
 app.get('/superLottoPlusPatterns' , analysis.patterns);
@@ -78,4 +78,4 @@ app.post('/userPattern',analysis.userPattern);
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
   });
-}
+//}
